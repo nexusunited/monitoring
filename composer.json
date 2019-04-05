@@ -1,0 +1,22 @@
+{
+  "name": "nxsspryker/monitoring",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jonas Terleckas",
+      "email": "jonas.terleckas@nfq.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.1.0",
+    "spryker/kernel": "^3.0.0",
+    "spryker/queue": "^1.0.0"
+  },
+  "autoload": {
+    "psr-0": {
+      "NxsSpryker\\": "src/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
