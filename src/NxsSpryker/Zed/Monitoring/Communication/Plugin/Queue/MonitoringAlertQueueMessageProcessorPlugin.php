@@ -57,7 +57,7 @@ class MonitoringAlertQueueMessageProcessorPlugin extends AbstractPlugin implemen
     private function createMonitoringAlertTransfer(QueueReceiveMessageTransfer $queueMessage): MonitoringAlertTransfer
     {
         $monitoringAlert = new MonitoringAlertTransfer();
-        $monitoringAlert->fromArray(\json_decode($queueMessage->getQueueMessage()->serialize(), true));
+        $monitoringAlert->fromArray(\json_decode($queueMessage->getQueueMessage()->getBody(), true), true);
         $monitoringAlert->requireCriteriaName();
 
         return $monitoringAlert;
