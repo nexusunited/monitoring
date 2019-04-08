@@ -72,6 +72,35 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
 
 ```
 
+Also, ***register queue processor plugin:***
+
+```php
+<?php
+
+namespace Pyz\Zed\Queue;
+
+use NxsSpryker\Shared\Monitoring\MonitoringConstants;
+use NxsSpryker\Zed\Monitoring\Communication\Plugin\Queue\MonitoringAlertQueueMessageProcessorPlugin;
+use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\Queue\QueueDependencyProvider as SprykerDependencyProvider;
+
+class QueueDependencyProvider extends SprykerDependencyProvider
+{
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Queue\Dependency\Plugin\QueueMessageProcessorPluginInterface[]
+     */
+    protected function getProcessorMessagePlugins(Container $container)
+    {
+        return [
+            // ...
+            MonitoringConstants::MONITORING_ALERT_QUEUE => new MonitoringAlertQueueMessageProcessorPlugin(),
+        ];
+    }
+}
+```
+
 
 Usage
 ------------------
